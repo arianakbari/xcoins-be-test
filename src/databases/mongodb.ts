@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import config from '../config';
+import Logger, { LOG_LABELS } from '../utilities/logger';
 
 const {
     userName,
@@ -27,15 +28,15 @@ try {
         replicaSet,
     });
 } catch (error) {
-    console.log('Failed to connect to MongoDB: ', error)
+    Logger.error(LOG_LABELS.DB_CONNECTION, 'Failed to connect to MongoDB: ', error);
 }
 
 mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB!')
+    Logger.debug(LOG_LABELS.DB_CONNECTION, 'Connected to MongoDB!');
 });
 
 mongoose.connection.on('error', (error) => {
-    console.log('Connection Error: ', error);
+    Logger.error(LOG_LABELS.DB_CONNECTION, 'Connection Error: ', error)
     throw new Error(`Can't to connect to MongoDB: ${connectionString}`);
 });
 

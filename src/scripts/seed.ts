@@ -2,6 +2,7 @@ import mongoose from "../databases/mongodb";
 import Profile from "../models/Profile";
 import Favorite from "../models/Favorite";
 import Simulator from "../models/Simulator";
+import Logger, { LOG_LABELS } from "../utilities/logger";
 
 const seed = async () => {
     const profileId = new mongoose.Types.ObjectId();
@@ -30,4 +31,4 @@ const seed = async () => {
         })
     ]);
 }
-seed().then(() => console.log('Seed successful')).catch(e => console.log('Seed failed', e))
+seed().then(() => Logger.info(LOG_LABELS.DATA_SEED, 'Seed successful')).catch(e => Logger.info(LOG_LABELS.DATA_SEED, 'Seed failed', e))
