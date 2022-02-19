@@ -1,12 +1,14 @@
 import { Router } from "express";
 import SimulatorController from "../controllers/simulator.controller";
+import validators from "../validators";
 
 const router = Router();
 
-router.get("/", SimulatorController.getSimulators);
+// @ts-ignore
+router.get("/", validators.getSimulators, SimulatorController.getSimulators);
 
-router.post("/", SimulatorController.createSimulator);
+router.post("/", validators.createSimulator, SimulatorController.createSimulator);
 
-router.get("/:profileId", SimulatorController.getSimulatorsByProfile);
+router.get("/:profileId", validators.getSimulatorsByProfile, SimulatorController.getSimulatorsByProfile);
 
 export default router;

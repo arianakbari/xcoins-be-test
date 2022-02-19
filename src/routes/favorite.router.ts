@@ -1,10 +1,13 @@
 import { Router } from "express";
 import FavoriteController from '../controllers/favorite.controller';
+import validators from "../validators"
 
 const router = Router();
 
-router.get("/", FavoriteController.getFavorites);
+// @ts-ignore
+router.get("/", validators.getFavorites, FavoriteController.getFavorites);
 
-router.get("/:id", FavoriteController.getFavorite)
+// @ts-ignore
+router.get("/:id", validators.getFavorite ,FavoriteController.getFavorite)
 
 export default router;

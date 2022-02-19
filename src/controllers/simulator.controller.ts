@@ -17,7 +17,7 @@ export default {
             data
         });
     },
-    async createSimulator(req: Request<null, { success: Boolean, data?: ISimulator, message: ReasonPhrases }, ISimulator, null>, res: Response) : Promise<Response> {
+    async createSimulator(req: Request<null, { success: Boolean, data?: ISimulator, message?: ReasonPhrases }, ISimulator, null>, res: Response) : Promise<Response> {
         const profileExists = await Profile.exists({ _id: req.body.profile })
         if (!profileExists) {
             return res.status(StatusCodes.NOT_FOUND).json({
@@ -31,7 +31,7 @@ export default {
             data
         });
     },
-    async getSimulatorsByProfile(req: Request<{ profileId: string }, { success: Boolean, data?: ISimulator[] }, null, null>, res: Response) : Promise<Response> {
+    async getSimulatorsByProfile(req: Request<{ profileId: string }, { success: Boolean, data: ISimulator[] }, null, null>, res: Response) : Promise<Response> {
         const data = await Simulator.find({ profile: req.params.profileId }).lean().select('-__v');
         return res.status(StatusCodes.OK).json({
             success: true,
