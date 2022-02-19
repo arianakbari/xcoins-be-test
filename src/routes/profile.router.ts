@@ -1,24 +1,10 @@
-import express from "express";
-import Profile from "../models/Profile";
+import { Router } from "express";
+import ProfileController from '../controllers/profile.controller';
 
-export var router = express.Router();
+const router = Router();
 
-router.get("/api/profile", async (req, res) => {
-  var profile = await Profile.find().lean();
-  console.log(profile);
-  res.json({ profile });
-});
+router.get("/", ProfileController.getProfiles);
 
-router.post("/api/profile", async (req, res) => {
-  var { email, name, nickname } = req.body;
+router.post("/", ProfileController.createProfile);
 
-  let profile = await Profile.findOne({
-    $or: [{ email }, { nickname }],
-  }).exec();
-
-  if (!profile) {
-    profile = await Profile.create({ name, email, nickname });
-  }
-
-  res.json(profile);
-});
+export default router;
