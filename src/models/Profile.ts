@@ -29,17 +29,14 @@ const schema = new Schema({
     },
     divisa: {
         type: String,
-        required: true,
         trim: true
     },
     capital: {
         type: Number,
-        required: true,
         default: 0,
     },
     preferredCryptocurrency: {
         type: String,
-        required: true,
         trim: true
     },
 });
