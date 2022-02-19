@@ -1,22 +1,36 @@
-import Profile from "../models/Profile";
+import { Request, Response } from "express"
+import { StatusCodes } from "http-status-codes";
+import Profile, { IProfile } from "../models/Profile";
 
 export default {
-    async getProfiles(req, res) {
-        var profile = await Profile.find().lean();
-        console.log(profile);
-        res.json({ profile });
+    async getProfiles(req: Request<null, { success: Boolean, data: IProfile[] }, null, { pageNumber: Number, pageSize: Number }>, res: Response) : Promise<Response> {
+        const { pageNumber = 1, pageSize = 10 } = req.query;
+        const data = await Profile.find()
+                                  .skip(Number(pageSize) * (Number(pageNumber) - 1))
+                                  .limit(Number(pageSize))
+                                  .select('-__v')
+                                  .lean();
+    
+        return res.status(StatusCodes.OK).json({ 
+            success: true,
+            data
+        });
     },
-    async createProfile(req, res) {
-        var { email, name, nickname } = req.body;
-      
-        let profile = await Profile.findOne({
-          $or: [{ email }, { nickname }],
-        }).exec();
-      
-        if (!profile) {
-          profile = await Profile.create({ name, email, nickname });
-        }
-      
-        res.json(profile);
+    async createProfile(req: Request<null, { success: Boolean, data: IProfile }, { email: string, name: string, nickname: string }, null>, res: Response) : Promise<Response> {
+        const { email, name, nickname } = req.body;
+
+        const data = await Profile.findOneAndUpdate(
+            {
+              $or: [{ email }, { nickname }],
+            },
+            { name },
+            {
+                new: true, 
+                upsert: true
+            });
+        return res.status(StatusCodes.CREATED).json({
+            success: true,
+            data
+        });
     }
 }

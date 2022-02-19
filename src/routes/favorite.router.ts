@@ -5,6 +5,6 @@ const router = Router();
 
 router.get("/", FavoriteController.getFavorites);
 
-router.get("/:profile_id", FavoriteController.getFavorite)
+router.get("/:id", FavoriteController.getFavorite)
 
 export default router;

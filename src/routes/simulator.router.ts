@@ -7,6 +7,6 @@ router.get("/", SimulatorController.getSimulators);
 
 router.post("/", SimulatorController.createSimulator);
 
-router.get("/:profile_id", SimulatorController.getSimulatorsByProfile);
+router.get("/:profileId", SimulatorController.getSimulatorsByProfile);
 
 export default router;
