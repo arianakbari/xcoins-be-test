@@ -1,0 +1,30 @@
+# API keys and secrets
+.env
+
+# Dependency directory
+node_modules
+
+# Editors
+.idea
+*.iml
+.vscode
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Ignore built ts files
+dist/**/*
+dist
+
+# ignore yarn.lock
+yarn.lock
+
+# ignore bench
+src/bench.ts
+
+# package lock
+package-lock.json
+
+# logs
+logs/*.log
