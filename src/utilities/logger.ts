@@ -5,6 +5,8 @@ export enum LOG_LABELS {
     START_APP = 'START_APP',
     DB_CONNECTION = 'DB_CONNECTION',
     DATA_SEED = 'DATA_SEED',
+    UNHANDLED_INTERNAL_ERROR = 'UNHANDLED_INTERNAL_ERROR',
+    DATA_VALIDATION = 'DATA_VALIDATION' 
 }
 
 const customFormatter = format.printf(
