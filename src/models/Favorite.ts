@@ -1,18 +1,34 @@
-import mongoose from "mongoose";
+import mongoose from "../databases/mongodb";
 
 const { Schema } = mongoose;
 
+export interface IFavorite extends mongoose.Document {
+    profile: mongoose.Types.ObjectId;
+    name: string;
+    favorites: string[];
+}
+
 const schema = new Schema(
   {
-    profile_id: String,
-    name: String,
-    favorite1: String,
-    favorite2: String,
-    favorite3: String,
+    profile: {
+      type: mongoose.Types.ObjectId,
+      ref: 'Profile',
+      required: true
+    },
+    name: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    favorites: [{
+      type: String,
+      required: true,
+      trim: true
+    }]
   },
   {
     timestamps: true,
   }
 );
 
-export const Favorite = mongoose.model("Favorite", schema);
+export default mongoose.model<IFavorite>("Favorite", schema);

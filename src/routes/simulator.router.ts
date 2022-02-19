@@ -1,6 +1,6 @@
 import express from "express";
 import { Router } from "express";
-import { Simulator } from "../models/Simulator";
+import Simulator from "../models/Simulator";
 import cors from "cors";
 
 var app = express();
