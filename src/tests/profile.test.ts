@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import request from "supertest";
 import app from "../app";
 import initDatabase from "../databases/mongodb";
-import Profile from "../models/Profile";
+import { Profile } from "../models";
 
 describe("Profile tests", () => {
     beforeEach(() => {

@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import initDatabase from "../databases/mongodb";
-import Profile from "../models/Profile";
-import Favorite from "../models/Favorite";
-import Simulator from "../models/Simulator";
+import { Profile, Favorite, Simulator } from "../models";
 import Logger, { LOG_LABELS } from "../utilities/logger";
 
 const seed = async () => {

@@ -1,5 +1,5 @@
 import { Router } from "express";
-import FavoriteController from "../controllers/favorite.controller";
+import { FavoriteController } from "../controllers";
 import validators from "../validators";
 
 const router = Router();

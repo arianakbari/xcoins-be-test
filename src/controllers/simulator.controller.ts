@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import Simulator, { ISimulator } from "../models/Simulator";
-import Profile from "../models/Profile";
+import { Simulator, Profile, ISimulator } from "../models";
 
 export default {
     async getSimulators(

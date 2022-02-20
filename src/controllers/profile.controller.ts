@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
-import Profile, { IProfile } from "../models/Profile";
+import { Profile, IProfile } from "../models";
 
 export default {
     async getProfiles(

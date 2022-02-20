@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 import request from "supertest";
 import app from "../app";
 import initDatabase from "../databases/mongodb";
-import Simulator from "../models/Simulator";
-import Profile from "../models/Profile";
+import { Simulator, Profile } from "../models";
 
 describe("Simulator tests", () => {
     beforeEach(() => {

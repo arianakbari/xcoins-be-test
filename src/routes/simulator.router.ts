@@ -1,5 +1,5 @@
 import { Router } from "express";
-import SimulatorController from "../controllers/simulator.controller";
+import { SimulatorController } from "../controllers";
 import validators from "../validators";
 
 const router = Router();

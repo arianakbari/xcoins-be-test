@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { StatusCodes, ReasonPhrases } from "http-status-codes";
-import Favorite, { IFavorite } from "../models/Favorite";
+import { Favorite, IFavorite } from "../models";
 
 export default {
     async getFavorites(
