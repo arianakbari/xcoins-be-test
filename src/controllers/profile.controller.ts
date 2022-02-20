@@ -20,9 +20,7 @@ export default {
         const { email, name, nickname } = req.body;
 
         const data = await Profile.findOneAndUpdate(
-            {
-              $or: [{ email }, { nickname }],
-            },
+            { email, nickname },
             { name },
             {
                 new: true, 

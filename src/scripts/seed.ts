@@ -1,4 +1,5 @@
-import mongoose from "../databases/mongodb";
+import mongoose from "mongoose";
+import initDatabase from "../databases/mongodb";
 import Profile from "../models/Profile";
 import Favorite from "../models/Favorite";
 import Simulator from "../models/Simulator";
@@ -31,4 +32,5 @@ const seed = async () => {
         })
     ]);
 }
+initDatabase();
 seed().then(() => Logger.info(LOG_LABELS.DATA_SEED, 'Seed successful')).catch(e => Logger.info(LOG_LABELS.DATA_SEED, 'Seed failed', e))
