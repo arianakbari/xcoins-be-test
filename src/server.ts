@@ -5,5 +5,8 @@ import initDatabase from "./databases/mongodb";
 
 initDatabase();
 app.listen(config.port, () =>
-    Logger.info(LOG_LABELS.START_APP, `✅  Ready on port http://localhost:${config.port}`)
+    Logger.info(
+        LOG_LABELS.START_APP,
+        `✅  Ready on port http://localhost:${config.port}`
+    )
 );

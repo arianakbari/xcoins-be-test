@@ -1,9 +1,19 @@
-import mongoose from 'mongoose';
-import config from '../config';
-import Logger, { LOG_LABELS } from '../utilities/logger';
+import mongoose from "mongoose";
+import config from "../config";
+import Logger, { LOG_LABELS } from "../utilities/logger";
 
-export default function(overrideSetting = false, opts: {userName?: string, password?: string, hostname: string, databaseName: string} = null) {
-    const {userName, password, hostname, databaseName} = overrideSetting ? opts : config.mongodb;
+export default function (
+    overrideSetting = false,
+    opts: {
+        userName?: string;
+        password?: string;
+        hostname: string;
+        databaseName: string;
+    } = null
+) {
+    const { userName, password, hostname, databaseName } = overrideSetting
+        ? opts
+        : config.mongodb;
     let connectionString: string;
 
     if (userName && password) {
@@ -11,7 +21,6 @@ export default function(overrideSetting = false, opts: {userName?: string, passw
     } else {
         connectionString = `mongodb://${hostname}/${databaseName}`;
     }
-
 
     try {
         mongoose.connect(connectionString, {
@@ -22,15 +31,20 @@ export default function(overrideSetting = false, opts: {userName?: string, passw
             useFindAndModify: false,
         });
     } catch (error) {
-        Logger.error(LOG_LABELS.DB_CONNECTION, 'Failed to connect to MongoDB: ', error);
+        Logger.error(
+            LOG_LABELS.DB_CONNECTION,
+            "Failed to connect to MongoDB: ",
+            error
+        );
     }
 
-    mongoose.connection.on('connected', () => {
-        Logger.debug(LOG_LABELS.DB_CONNECTION, 'Connected to MongoDB!');
+    mongoose.connection.on("connected", () => {
+        Logger.debug(LOG_LABELS.DB_CONNECTION, "Connected to MongoDB!");
     });
 
-    mongoose.connection.on('error', (error) => {
-        Logger.error(LOG_LABELS.DB_CONNECTION, 'Connection Error: ', error)
+    mongoose.connection.on("error", (error) => {
+        Logger.error(LOG_LABELS.DB_CONNECTION, "Connection Error: ", error);
         throw new Error(`Can't to connect to MongoDB: ${connectionString}`);
     });
-};
+    return;
+}

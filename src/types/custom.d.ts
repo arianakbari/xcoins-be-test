@@ -1,6 +1,6 @@
-import core from 'express-serve-static-core'; // Dont remove
+import core from "express-serve-static-core"; // Dont remove
 
-declare module 'joi' {
+declare module "joi" {
     export interface Root {
         objectId?: any;
     }

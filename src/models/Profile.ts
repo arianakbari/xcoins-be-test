@@ -15,21 +15,21 @@ const schema = new Schema({
     name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     nickname: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     email: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
     },
     divisa: {
         type: String,
-        trim: true
+        trim: true,
     },
     capital: {
         type: Number,
@@ -37,7 +37,7 @@ const schema = new Schema({
     },
     preferredCryptocurrency: {
         type: String,
-        trim: true
+        trim: true,
     },
 });
 

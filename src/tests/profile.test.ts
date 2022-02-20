@@ -5,10 +5,12 @@ import initDatabase from "../databases/mongodb";
 import Profile from "../models/Profile";
 
 describe("Profile tests", () => {
-
     beforeEach(() => {
         // connect to database
-        initDatabase(true, { hostname: "localhost:27018", databaseName: "test" });
+        initDatabase(true, {
+            hostname: "localhost:27018",
+            databaseName: "test",
+        });
     });
     afterEach(async () => {
         // drop the database and disconnect
@@ -17,20 +19,20 @@ describe("Profile tests", () => {
     });
     it("should return all profiles.", async () => {
         const profile1 = await Profile.create({
-            name: 'Profile1',
-            nickname: 'Profile1',
+            name: "Profile1",
+            nickname: "Profile1",
             email: "test@test.com",
-            divisa: 'divisa',
+            divisa: "divisa",
             capital: 123,
-            preferredCryptocurrency: "LTC"
+            preferredCryptocurrency: "LTC",
         });
         const profile2 = await Profile.create({
-            name: 'Profile2',
-            nickname: 'Profile2',
+            name: "Profile2",
+            nickname: "Profile2",
             email: "test2@test.com",
-            divisa: 'divisa2',
+            divisa: "divisa2",
             capital: 1234,
-            preferredCryptocurrency: "BTC"
+            preferredCryptocurrency: "BTC",
         });
         const response = await request(app).get("/api/v1/profiles");
         expect(response.status).toEqual(200);
@@ -44,7 +46,7 @@ describe("Profile tests", () => {
         const data = {
             name: "Profile",
             nickname: "Profile",
-            email: "test@test.com"
+            email: "test@test.com",
         };
         const response = await request(app).post("/api/v1/profiles").send(data);
         expect(response.status).toEqual(201);

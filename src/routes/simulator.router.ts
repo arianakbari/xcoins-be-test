@@ -7,8 +7,16 @@ const router = Router();
 // @ts-ignore
 router.get("/", validators.getSimulators, SimulatorController.getSimulators);
 
-router.post("/", validators.createSimulator, SimulatorController.createSimulator);
+router.post(
+    "/",
+    validators.createSimulator,
+    SimulatorController.createSimulator
+);
 
-router.get("/:profileId", validators.getSimulatorsByProfile, SimulatorController.getSimulatorsByProfile);
+router.get(
+    "/:profileId",
+    validators.getSimulatorsByProfile,
+    SimulatorController.getSimulatorsByProfile
+);
 
 export default router;

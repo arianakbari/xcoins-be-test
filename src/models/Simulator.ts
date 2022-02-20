@@ -15,7 +15,7 @@ const schema = new Schema(
     {
         profile: {
             type: mongoose.Types.ObjectId,
-            ref: 'Profile',
+            ref: "Profile",
             required: true,
         },
         dateRecorded: {

@@ -9,26 +9,28 @@ export interface IFavorite extends mongoose.Document {
 }
 
 const schema = new Schema(
-  {
-    profile: {
-      type: mongoose.Types.ObjectId,
-      ref: 'Profile',
-      required: true
+    {
+        profile: {
+            type: mongoose.Types.ObjectId,
+            ref: "Profile",
+            required: true,
+        },
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        favorites: [
+            {
+                type: String,
+                required: true,
+                trim: true,
+            },
+        ],
     },
-    name: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    favorites: [{
-      type: String,
-      required: true,
-      trim: true
-    }]
-  },
-  {
-    timestamps: true,
-  }
+    {
+        timestamps: true,
+    }
 );
 
 export default mongoose.model<IFavorite>("Favorite", schema);
