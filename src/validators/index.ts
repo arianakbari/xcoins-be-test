@@ -3,7 +3,7 @@ import { validate } from 'express-validation';
 
 // @ts-ignore
 import joiObjectId from 'joi-objectid';
-
+// @ts-ignore
 joi.objectId = joiObjectId(joi);
 
 
@@ -45,6 +45,7 @@ const getFavorites = validate(
 const getFavorite = validate(
     {
         params: joi.object({
+            // @ts-ignore
             id: joi.objectId().required(),
         })
             .required()
@@ -67,6 +68,7 @@ const getSimulators = validate(
 const createSimulator = validate(
     {
         body: joi.object({
+            // @ts-ignore
             profile: joi.objectId().required(),
             dateRecorded: joi.date().required(),
             cryptocurrency: joi.string().required(),
@@ -81,6 +83,7 @@ const createSimulator = validate(
 const getSimulatorsByProfile = validate(
     {
         params: joi.object({
+            // @ts-ignore
             profileId: joi.objectId().required(),
         })
             .required()

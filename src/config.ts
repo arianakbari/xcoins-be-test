@@ -1,7 +1,3 @@
-import dotenv from "dotenv";
-
-dotenv.config();
-
 export interface IMongoDbConfig {
   hostname: string;
     databaseName: string;
@@ -31,11 +27,11 @@ const config: IConfig = {
   debugMode: checkEnv("NODE_ENV", 'development') === 'development',
   port: parseInt(checkEnv("PORT", 3000), 10),
   mongodb: {
-      hostname: checkEnv('MONGODB_HOST_NAME'),
-      databaseName: checkEnv('MONGODB_DATABASE_NAME'),
-      userName: checkEnv('MONGODB_USER_NAME'),
-      password: checkEnv('MONGODB_PASSWORD'),
-      replicaSet: checkEnv('MONGODB_REPLICA_SET'),
+      hostname: checkEnv('MONGODB_HOST_NAME', '127.0.0.1:27018'),
+      databaseName: checkEnv('MONGODB_DATABASE_NAME', 'xcoins'),
+      userName: checkEnv('MONGODB_USER_NAME', ''),
+      password: checkEnv('MONGODB_PASSWORD', ''),
+      replicaSet: checkEnv('MONGODB_REPLICA_SET', 'rs'),
   },
   corsOrigins: (checkEnv('CORS_ORIGINS', "http://localhost:3000")).split(','),
 }

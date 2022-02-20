@@ -1,0 +1,27 @@
+version: "3.7"
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+  app:
+    container_name: app
+    restart: always
+    build: .
+    env_file: .env
+    environment:
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - MONGODB_HOST_NAME=mongo:27017
+      - MONGODB_DATABASE_NAME=${MONGODB_DATABASE_NAME}
+      - MONGODB_USER_NAME=${MONGODB_USER_NAME}
+      - MONGODB_PASSWORD=${MONGODB_PASSWORD}
+      - MONGODB_REPLICA_SET=${MONGODB_REPLICA_SET}
+    ports:
+      - 80:${PORT}
+    external_links:
+      - mongo
+    depends_on:
+      - mongo

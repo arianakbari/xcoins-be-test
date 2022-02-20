@@ -7,7 +7,6 @@ const {
     password,
     hostname,
     databaseName,
-    replicaSet,
 } = config.mongodb;
 
 let connectionString: string;
@@ -25,7 +24,6 @@ try {
         useUnifiedTopology: true,
         useCreateIndex: true,
         useFindAndModify: false,
-        replicaSet,
     });
 } catch (error) {
     Logger.error(LOG_LABELS.DB_CONNECTION, 'Failed to connect to MongoDB: ', error);
