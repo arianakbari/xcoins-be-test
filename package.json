@@ -34,15 +34,23 @@
     "winston": "^3.6.0"
   },
   "scripts": {
-    "dev": "ts-node-dev src/api.ts",
+    "dev": "ts-node-dev src/server.ts",
     "seed": "ts-node-dev src/scripts/seed.ts",
-    "start": "node dist/src/api.js",
-    "build": "tsc -b"
+    "start": "node dist/src/server.js",
+    "build": "tsc -b",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage"
   },
   "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
-    "eslint-plugin-react": "^7.23.2"
+    "eslint-plugin-react": "^7.23.2",
+    "jest": "^27.5.1",
+    "supertest": "^6.2.2",
+    "ts-jest": "^27.1.3"
   }
 }
