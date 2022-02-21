@@ -2,6 +2,8 @@
 
 - Dockerized the whole project so we can start it by `docker-compose up`.
 
+- Removed unnecessary packages and also moved some packages from dependencies to dev dependencies.
+
 - Added eslint and prettier to have consistency across the codebase.
 
 - Added `swagger.json` and `swagger-ui` for documentation.
